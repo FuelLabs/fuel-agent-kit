@@ -3,12 +3,24 @@ import { model } from '../../../agent.js';
 import { transferAndSwapPrompt } from '../../prompts/defi/transferAndSwap.js';
 import { transferTool, swapExactInputTool } from '../../../tools.js';
 import { HumanMessage } from '@langchain/core/messages';
-
+import { fuelAgentState } from '../../utils/state.js';
 export const transferAndSwapGraph = createReactAgent({
   llm: model,
   tools: [transferTool, swapExactInputTool],
   stateModifier: transferAndSwapPrompt,
 });
+
+export const transferAndSwapNode = async (
+  state: typeof fuelAgentState.State,
+) => {
+  const messages = state.messages;
+
+  const result = await transferAndSwapGraph.invoke({
+    messages,
+  });
+
+  return { messages: [...result.messages] };
+};
 
 // const messages = [new HumanMessage('transfer 100 USDC to eth')];
 

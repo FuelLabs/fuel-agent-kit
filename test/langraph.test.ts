@@ -1,7 +1,14 @@
-import { orchestrator } from '../src/index.js';
+import { graph } from '../src/index.js';
+import { HumanMessage } from '@langchain/core/messages';
 import { test } from 'vitest';
 
-test('orchestrator', async () => {
-  const result = await orchestrator('swap usdc to eth');
-  console.log(result);
-});
+test(
+  'orchestrator',
+  async () => {
+    const result = await graph.invoke({
+      messages: [new HumanMessage('swap 1 USDC to ETH')],
+    });
+    console.log(result);
+  },
+  { timeout: 0 },
+);
