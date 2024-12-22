@@ -24,7 +24,7 @@ export class FuelAgent {
     }
   }
 
-  async exceuteLanggraph(input: string) {
+  async executeLanggraph(input: string) {
     const response = await graph.invoke({
       messages: [new HumanMessage(input)],
     });

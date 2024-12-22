@@ -3,7 +3,7 @@ import { HumanMessage } from '@langchain/core/messages';
 import { test } from 'vitest';
 
 test(
-  'orchestrator',
+  'langgraph',
   async () => {
     const result = await graph.invoke({
       messages: [new HumanMessage('swap 1 USDC to ETH')],
