@@ -1,0 +1,8 @@
+{
+  "node_version": "20",
+  "graphs": {
+    "agent": "./langraph/index.ts:graph"
+  },
+  "env": ".env",
+  "dependencies": ["."]
+}
