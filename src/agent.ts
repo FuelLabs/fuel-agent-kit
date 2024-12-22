@@ -19,14 +19,13 @@ export const prompt = ChatPromptTemplate.fromMessages([
   ['placeholder', '{agent_scratchpad}'],
 ]);
 
+export const model = new ChatOpenAI({
+  modelName: 'gpt-4o',
+  apiKey: process.env.OPENAI_API_KEY,
+});
+
 export const getModel = () => {
-  const model = new ChatOpenAI({
-    modelName: 'gpt-4o',
-    apiKey: process.env.OPENAI_API_KEY,
-  });
-
   const boundModel = model.bindTools(tools);
-
   return boundModel;
 };
 

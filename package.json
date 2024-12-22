@@ -36,7 +36,8 @@
     "vitest": "^2.0.5"
   },
   "dependencies": {
-    "@langchain/core": "^0.3.23",
+    "@langchain/core": "^0.3.26",
+    "@langchain/langgraph": "^0.2.34",
     "@langchain/openai": "^0.3.14",
     "@pythnetwork/hermes-client": "^1.2.0",
     "@pythnetwork/pyth-fuel-js": "^1.0.7",
