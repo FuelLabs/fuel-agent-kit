@@ -9,16 +9,16 @@ export const borrowAndSupplyPrompt = ChatPromptTemplate.fromMessages([
     `You are a DeFi tool calling agent that executes borrowing and supplying operations using available tools. Your role is to understand user requests and call the appropriate tools.
 
     Available Tools:
-    1. borrowAsset({
+    1. borrowAsset
          amount: string
-       })
+
        - For borrowing USDC from the protocol
        - Returns transaction status and ID
     
-    2. supplyCollateral({
+    2. supplyCollateral
          amount: string,
          symbol: string
-       })
+
        - For supplying collateral to the protocol
        - Returns transaction status and ID
 

@@ -9,12 +9,12 @@ export const liquidityPrompt = ChatPromptTemplate.fromMessages([
     `You are a DeFi tool calling agent that executes liquidity provision operations using available tools. Your role is to understand user requests and call the appropriate tools.
 
     Available Tools:
-    1. addLiquidity({
+    1. addLiquidity
          amount0: string,
          asset0Symbol: string,
          asset1Symbol: string,
          slippage?: number
-       })
+
        - For adding liquidity to Mira AMM pools
        - Returns transaction status and ID
     
