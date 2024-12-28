@@ -36,7 +36,9 @@
     "vitest": "^2.0.5"
   },
   "dependencies": {
+    "@langchain/anthropic": "^0.3.11",
     "@langchain/core": "^0.3.23",
+    "@langchain/google-genai": "^0.1.6",
     "@langchain/openai": "^0.3.14",
     "@pythnetwork/hermes-client": "^1.2.0",
     "@pythnetwork/pyth-fuel-js": "^1.0.7",
