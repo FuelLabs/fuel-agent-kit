@@ -47,6 +47,7 @@
     "dotenv": "^16.4.7",
     "langchain": "^0.3.7",
     "mira-dex-ts": "^1.0.42",
+    "tsx": "^4.19.2",
     "vite": "^6.0.6",
     "zod": "^3.24.1"
   },
@@ -61,6 +62,7 @@
     "format": "prettier --write .",
     "check-format": "prettier --check .",
     "check-exports": "attw --pack .",
-    "local-release": "npm run ci && changeset version && changeset publish"
+    "local-release": "npm run ci && changeset version && changeset publish",
+    "langgraph": "tsx example/langgraph/src/index.ts"
   }
 }

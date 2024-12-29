@@ -9,6 +9,6 @@ export const orchestatorRouter = (state: typeof fuelAgentState.State) => {
   } else if (state.isTransferOrSwap) {
     return 'transferAndSwap';
   } else {
-    return END;
+    return 'general';
   }
 };
