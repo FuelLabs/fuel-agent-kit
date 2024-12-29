@@ -1,12 +1,13 @@
 import { createReactAgent } from '@langchain/langgraph/prebuilt';
-
+import { model } from '../../utils/model.js';
 import { transferAndSwapPrompt } from '../../prompts/defi/transferAndSwap.js';
-import { transferTool, swapExactInputTool } from '../../../tools.js';
+import { transferTool, swapExactInputTool } from '../../tools/index.js';
 import { HumanMessage } from '@langchain/core/messages';
 import { fuelAgentState } from '../../utils/state.js';
+import { Tool, tool } from '@langchain/core/tools';
 export const transferAndSwapGraph = createReactAgent({
   llm: model,
-  tools: [transferTool, swapExactInputTool],
+  tools: [transferTool],
   stateModifier: transferAndSwapPrompt,
 });
 

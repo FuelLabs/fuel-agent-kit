@@ -1,7 +1,7 @@
 import { createReactAgent } from '@langchain/langgraph/prebuilt';
-import { model } from '../../agent.js';
+import { model } from '../../utils/model.js';
 import { liquidityPrompt } from '../../prompts/defi/liquidity.js';
-import { addLiquidityTool } from '../../tools/defi/tools.js';
+import { addLiquidityTool } from '../../tools/index.js';
 import { HumanMessage } from '@langchain/core/messages';
 import { fuelAgentState } from '../../utils/state.js';
 export const liquidityGraph = createReactAgent({

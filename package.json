@@ -44,8 +44,10 @@
     "@langchain/openai": "^0.3.16",
     "@pythnetwork/hermes-client": "^1.2.0",
     "@pythnetwork/pyth-fuel-js": "^1.0.7",
+    "dotenv": "^16.4.7",
     "langchain": "^0.3.7",
     "mira-dex-ts": "^1.0.42",
+    "vite": "^6.0.6",
     "zod": "^3.24.1"
   },
   "peerDependencies": {

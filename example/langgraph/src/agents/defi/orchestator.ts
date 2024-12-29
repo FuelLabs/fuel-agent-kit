@@ -1,7 +1,6 @@
-import { prompt, parser } from '../prompts/orchestator.js';
+import { prompt, parser } from '../../prompts/defi/orchestator.js';
 import { RunnableSequence } from '@langchain/core/runnables';
-import { model } from '../../agent.js';
-import { HumanMessage } from '@langchain/core/messages';
+import { model } from '../../utils/model.js';
 import { fuelAgentState } from '../../utils/state.js';
 
 const chain = RunnableSequence.from([prompt, model, parser]);
