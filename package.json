@@ -37,9 +37,11 @@
   },
   "dependencies": {
     "@langchain/anthropic": "^0.3.11",
-    "@langchain/core": "^0.3.23",
+    "@langchain/community": "^0.3.20",
+    "@langchain/core": "^0.3.26",
     "@langchain/google-genai": "^0.1.6",
-    "@langchain/openai": "^0.3.14",
+    "@langchain/langgraph": "^0.2.36",
+    "@langchain/openai": "^0.3.16",
     "@pythnetwork/hermes-client": "^1.2.0",
     "@pythnetwork/pyth-fuel-js": "^1.0.7",
     "langchain": "^0.3.7",
