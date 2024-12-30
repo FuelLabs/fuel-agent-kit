@@ -75,3 +75,25 @@ npm run build
 ```
 
 To test a feature, add a test file in the `test` directory.
+
+## LangGraph Example
+
+The project includes a LangGraph example that demonstrates how to build complex agent workflows using the Fuel Agent Kit. You can find it in the `example/langgraph` directory.
+
+LangGraph allows you to create sophisticated multi-agent systems with complex state management and workflows. The example showcases:
+
+- Multiple specialized agents working together (Transfer, Swap, Liquidity)
+- An orchestrator agent coordinating the workflow
+- State management between agent interactions
+- Complex DeFi operations using natural language
+
+To run the LangGraph example:
+
+And you can modify the prompt in `example/langgraph/src/index.ts` to see how the agent behaves.
+
+```bash
+pnpm install
+pnpm run langgraph
+```
+
+Check out the example's README for more detailed information about the implementation and architecture.
