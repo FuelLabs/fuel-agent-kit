@@ -124,4 +124,12 @@ export const createTools = (agent: FuelAgentInterface) => [
     description: 'Get the balance of an asset for a given wallet address',
     schema: getBalanceSchema,
   }),
+
+  tool( stakeFuel, {
+    name: 'stake_fuel',
+    description: 'Stake Fuel to tokens',
+    schema: getBalanceSchema
+  }
+
+  )
 ];

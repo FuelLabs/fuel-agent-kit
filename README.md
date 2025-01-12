@@ -1,19 +1,62 @@
-# fuel-agent-kit (alpha)
+# Fuel Agent Monorepo
 
-Docs: https://dhaiwatpandya.gitbook.io/fuel-agent-kit/
+This monorepo contains the Fuel Agent project, organized using pnpm workspaces for efficient management of multiple packages and applications.
+
+## Structure
+
+- `apps/`: Contains the main applications
+- `docs/`: Documentation application
+- `packages/`: Contains shared packages
+- `fuel-agent-kit/`: Internal package providing AI agent capabilities on the Fuel network
 
 ## Getting Started
 
+### 1. Install Dependencies
+
+Run the following command:
+
 ```bash
-npm install fuel-agent-kit fuels
+pnpm install
 ```
 
-You will need two things:
+### 2. Build All Packages
 
-- A Fuel wallet private key
-- An OpenAI or Gemini or Anthropic API key
+Run the following command:
 
-```ts
+```bash
+pnpm build
+```
+
+### 3. Develop Applications
+
+Run the following command:
+
+```bash
+pnpm dev
+```
+
+## fuel-agent-kit
+
+The fuel-agent-kit is an internal package that provides tools to build AI agents on the Fuel network.
+
+### Installation
+
+To install the package, run:
+
+```bash
+pnpm add fuel-agent-kit fuels
+```
+
+### Documentation
+
+Comprehensive documentation is available at:
+https://dhaiwatpandya.gitbook.io/fuel-agent-kit/
+
+### Usage
+
+To use the fuel-agent-kit, here's an example:
+
+```typescript
 import { FuelAgent } from 'fuel-agent-kit';
 
 const agent = new FuelAgent({
@@ -22,56 +65,17 @@ const agent = new FuelAgent({
   walletPrivateKey: process.env.FUEL_WALLET_PRIVATE_KEY,
 });
 
-// Call different functions
-await agent.transfer({
-  to: '0x8F8afB12402C9a4bD9678Bec363E51360142f8443FB171655eEd55dB298828D1',
-  amount: 0.1,
-  symbol: 'USDC',
-});
-
-// or, execute commands in natural language
-await agent.execute(
-  'Send 0.1 USDC to 0x8F8afB12402C9a4bD9678Bec363E51360142f8443FB171655eEd55dB298828D1',
-);
-
-// Swap Assets
-await agent.execute('Swap 5 USDC for ETH');
-
-// Add Liqudity
-await agent.execute(
-  'Add liquidity into USDC/USDT pool for 0.1 USDC with 5% slippage',
-);
-
-// Lend Assets
-await agent.execute('Supply 10 USDT as Collateral');
-
-// Borrow Assets
-await agent.execute('Borrow 11 USDC');
+// Execute commands in natural language
+await agent.execute('Send 0.1 USDC to 0xRecipientAddress');
 ```
 
-All Langchain tools are also available to be imported and used directly.
+For more examples and detailed usage, visit the documentation:
+https://dhaiwatpandya.gitbook.io/fuel-agent-kit/
 
-```ts
-import { transferTool } from 'fuel-agent-kit';
-```
+## Contributing
 
-### Local Development
+Contributions are welcome. Please follow the guidelines outlined in the [CONTRIBUTING.md](https://github.com/0xamogh/fuel-agent-kit/blob/main/CONTRIBUTING.md) file.
 
-Make sure you have the following environment variables set:
+## License
 
-- `OPENAI_API_KEY`: Your OpenAI API key (or `GOOGLE_GEMINI_API_KEY` or `ANTHROPIC_API_KEY`)
-- `FUEL_WALLET_PRIVATE_KEY`: Your Fuel wallet private key
-
-To run the project locally, run the following command:
-
-Then, install the dependencies:
-
-```bash
-npm install
-```
-
-```bash
-npm run build
-```
-
-To test a feature, add a test file in the `test` directory.
+This project is licensed under the MIT License. See the [LICENSE](https://github.com/0xamogh/fuel-agent-kit/blob/main/LICENSE) file for details.

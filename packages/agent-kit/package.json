@@ -1,0 +1,66 @@
+{
+  "name": "fuel-agent-kit",
+  "version": "0.11.1",
+  "description": "An AI agent for Fuel",
+  "keywords": [
+    "fuel",
+    "agent"
+  ],
+  "main": "dist/index.js",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+ 
+  "homepage": "https://github.com/dhaiwat10/fuel-agent-kit",
+  "bugs": {
+    "url": "https://github.com/dhaiwat10/fuel-agent-kit/issues"
+  },
+  "author": "Dhai <dhaiwatpandya@gmail.com> (https://twitter.com/dhaiwat10)",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dhaiwat10/fuel-agent-kit"
+  },
+  "license": "MIT",
+  "files": [
+    "dist"
+  ],
+  "type": "module",
+  "devDependencies": {
+    "@arethetypeswrong/cli": "^0.15.4",
+    "@changesets/cli": "^2.27.7",
+    "prettier": "^3.3.3",
+    "tsup": "^8.2.4",
+    "turbo": "^2.3.3",
+    "typescript": "^5.5.4",
+    "vitest": "^2.0.5"
+  },
+  "dependencies": {
+    "@langchain/anthropic": "^0.3.11",
+    "@langchain/core": "^0.3.23",
+    "@langchain/google-genai": "^0.1.6",
+    "@langchain/openai": "^0.3.14",
+    "@pythnetwork/hermes-client": "^1.2.0",
+    "@pythnetwork/pyth-fuel-js": "^1.0.7",
+    "fuel-agent-kit": "^0.11.1",
+    "langchain": "^0.3.7",
+    "mira-dex-ts": "^1.0.42",
+    "zod": "^3.24.1"
+  },
+  "peerDependencies": {
+    "fuels": "^0.96.1"
+  },
+  "scripts": {
+    "build": "tsup",
+    "ci": "npm run build && npm run check-format && npm run check-exports && npm run lint",
+    "lint": "tsc",
+    "test": "vitest run",
+    "format": "prettier --write .",
+    "check-format": "prettier --check .",
+    "check-exports": "attw --pack .",
+    "local-release": "npm run ci && changeset version && changeset publish"
+  },
+  "packageManager": "npm@10.8.1"
+}
