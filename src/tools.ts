@@ -80,48 +80,65 @@ const getBalanceSchema = z.object({
 });
 
 /**
- * Creates and returns all tools with injected agent credentials
+ * Creates a single tool with injected agent credentials
  */
-export const createTools = (agent: FuelAgentInterface) => [
+export const createTransferTool = (agent: FuelAgentInterface) =>
   tool(withWalletKey(transfer, agent), {
     name: 'fuel_transfer',
     description: 'Transfer any verified Fuel asset to another wallet',
     schema: transferSchema,
-  }),
+  });
 
+export const createSwapTool = (agent: FuelAgentInterface) =>
   tool(withWalletKey(swapExactInput, agent), {
     name: 'swap_exact_input',
     description: 'Swap exact input on Mira',
     schema: swapSchema,
-  }),
+  });
 
+export const createSupplyCollateralTool = (agent: FuelAgentInterface) =>
   tool(withWalletKey(supplyCollateral, agent), {
     name: 'supply_collateral',
     description: 'Supply collateral on swaylend',
     schema: supplyCollateralSchema,
-  }),
+  });
 
+export const createBorrowAssetTool = (agent: FuelAgentInterface) =>
   tool(withWalletKey(borrowAsset, agent), {
     name: 'borrow_asset',
     description: 'Borrow asset on swaylend',
     schema: borrowAssetSchema,
-  }),
+  });
 
+export const createAddLiquidityTool = (agent: FuelAgentInterface) =>
   tool(withWalletKey(addLiquidity, agent), {
     name: 'add_liquidity',
     description: 'Add liquidity to a Mira pool',
     schema: addLiquiditySchema,
-  }),
+  });
 
+export const createGetOwnBalanceTool = (agent: FuelAgentInterface) =>
   tool(withWalletKey(getOwnBalance, agent), {
     name: 'get_own_balance',
     description: 'Get the balance of an asset in your wallet',
     schema: getOwnBalanceSchema,
-  }),
+  });
 
-  tool(getBalance, {
-    name: 'get_balance',
-    description: 'Get the balance of an asset for a given wallet address',
-    schema: getBalanceSchema,
-  }),
+export const getBalanceTool = tool(getBalance, {
+  name: 'get_balance',
+  description: 'Get the balance of an asset for a given wallet address',
+  schema: getBalanceSchema,
+});
+
+/**
+ * Creates and returns all tools with injected agent credentials
+ */
+export const createTools = (agent: FuelAgentInterface) => [
+  createTransferTool(agent),
+  createSwapTool(agent),
+  createSupplyCollateralTool(agent),
+  createBorrowAssetTool(agent),
+  createAddLiquidityTool(agent),
+  createGetOwnBalanceTool(agent),
+  getBalanceTool,
 ];
