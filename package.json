@@ -47,7 +47,7 @@
     "zod": "^3.24.1"
   },
   "peerDependencies": {
-    "fuels": "^0.96.1"
+    "fuels": "^0.100.1"
   },
   "scripts": {
     "build": "tsup",

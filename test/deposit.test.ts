@@ -8,5 +8,5 @@ beforeEach(() => {
 });
 
 test('supplyCollateral', async () => {
-  console.log(await agent.execute('Supply 2 USDT as collateral'));
+  console.log(await agent.execute('Supply 0.1 USDT as collateral'));
 });

@@ -8,15 +8,17 @@ beforeEach(() => {
 });
 
 test('swap exact input', async () => {
-  console.log(
-    await agent.swapExactInput({
-      amount: '0.0001',
-      fromSymbol: 'ETH',
-      toSymbol: 'USDC',
-    }),
-  );
+  console.log('Starting swap exact input test...');
+  const result = await agent.swapExactInput({
+    amount: '0.1',
+    fromSymbol: 'USDT',
+    toSymbol: 'ETH',
+  });
+  console.log('Swap result:', result);
 });
 
 test('swap via natural language', async () => {
-  console.log(await agent.execute('Swap 0.1 USDC to ETH with 5% slippage'));
+  console.log('Starting natural language swap test...');
+  const result = await agent.execute('Swap 0.1 USDT to ETH with 5% slippage');
+  console.log('Natural language swap result:', result);
 });

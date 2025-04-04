@@ -8,5 +8,5 @@ beforeEach(() => {
 });
 
 test('execute swap', async () => {
-  console.log(await agent.execute('swap 5 usdc for eth'));
+  console.log(await agent.execute('swap 0.1 usdt for eth'));
 });
