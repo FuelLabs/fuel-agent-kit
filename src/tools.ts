@@ -8,6 +8,7 @@ import { supplyCollateral } from './swaylend/supply.js';
 import { borrowAsset } from './swaylend/borrow.js';
 import { addLiquidity } from './mira/addLiquidity.js';
 import { getBalance, getOwnBalance } from './read/balance.js';
+import { getResolver, getName } from './bako/resolver.js';
 
 // Types
 type FuelAgentInterface = {
@@ -79,6 +80,14 @@ const getBalanceSchema = z.object({
     .describe('The asset symbol to get the balance of. eg. USDC, ETH'),
 });
 
+const resolverSchema = z.object({
+  identity: z.string().describe('The Bako identity to resolve'),
+});
+
+const resolverNameSchema = z.object({
+  resolverAddress: z.string().describe('The resolver address to get the name for'),
+});
+
 /**
  * Creates and returns all tools with injected agent credentials
  */
@@ -123,5 +132,17 @@ export const createTools = (agent: FuelAgentInterface) => [
     name: 'get_balance',
     description: 'Get the balance of an asset for a given wallet address',
     schema: getBalanceSchema,
+  }),
+
+  tool(withWalletKey(getResolver, agent), {
+    name: 'get_resolver',
+    description: 'Get the resolver for a Bako identity',
+    schema: resolverSchema,
+  }),
+
+  tool(withWalletKey(getName, agent), {
+    name: 'get_name',
+    description: 'Get the name for a Bako resolver address',
+    schema: resolverNameSchema,
   }),
 ];

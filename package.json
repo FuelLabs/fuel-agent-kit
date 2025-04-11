@@ -36,6 +36,7 @@
     "vitest": "^2.0.5"
   },
   "dependencies": {
+    "@bako-id/sdk": "^0.0.18",
     "@langchain/anthropic": "^0.3.11",
     "@langchain/core": "^0.3.23",
     "@langchain/google-genai": "^0.1.6",
