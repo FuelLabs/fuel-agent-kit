@@ -36,7 +36,7 @@
     "vitest": "^2.0.5"
   },
   "dependencies": {
-    "@bako-id/sdk": "^0.0.18",
+    "@bako-id/sdk": "^0.0.19",
     "@langchain/anthropic": "^0.3.11",
     "@langchain/core": "^0.3.23",
     "@langchain/google-genai": "^0.1.6",
@@ -44,11 +44,11 @@
     "@pythnetwork/hermes-client": "^1.2.0",
     "@pythnetwork/pyth-fuel-js": "^1.0.7",
     "langchain": "^0.3.7",
-    "mira-dex-ts": "^1.0.42",
+    "mira-dex-ts": "^1.1.42",
     "zod": "^3.24.1"
   },
   "peerDependencies": {
-    "fuels": "^0.100.1"
+    "fuels": "^0.100.3"
   },
   "scripts": {
     "build": "tsup",
