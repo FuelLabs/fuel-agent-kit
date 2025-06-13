@@ -3,21 +3,21 @@ import { Wallet } from 'fuels';
 import { ProviderInstance } from '../utils/setup.js';
 
 export type ResolverParams = {
-  identity: string;
+  name: string;
 };
 
 export type ResolverNameParams = {
   resolverAddress: string;
 };
 
-export const getResolver = async (params: ResolverParams, privateKey: string) => {
+export const getResolver = async (params: ResolverParams) => {
   try {
-    const { identity } = params;
+    const { name } = params;
     const provider = await ProviderInstance.getProvider();
-    const wallet = Wallet.fromPrivateKey(privateKey, provider);
+    // const wallet = Wallet.fromPrivateKey(privateKey, provider);
 
-    const client = new BakoIDClient('https://mainnet.fuel.network/v1/graphql');
-    const result = await client.resolver(identity, 1); // 1 is the chainId for mainnet
+    const client = new BakoIDClient();
+    const result = await client.resolver(name, 1); // 1 is the chainId for mainnet
 
     return JSON.stringify({
       status: 'success',
@@ -31,13 +31,13 @@ export const getResolver = async (params: ResolverParams, privateKey: string) =>
   }
 };
 
-export const getName = async (params: ResolverNameParams, privateKey: string) => {
+export const getName = async (params: ResolverNameParams) => {
   try {
     const { resolverAddress } = params;
     const provider = await ProviderInstance.getProvider();
-    const wallet = Wallet.fromPrivateKey(privateKey, provider);
+    // const wallet = Wallet.fromPrivateKey(privateKey, provider);
 
-    const client = new BakoIDClient('https://mainnet.fuel.network/v1/graphql');
+    const client = new BakoIDClient();
     const result = await client.name(resolverAddress, 1); // 1 is the chainId for mainnet
 
     return JSON.stringify({

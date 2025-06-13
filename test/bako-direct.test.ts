@@ -11,16 +11,14 @@ beforeEach(() => {
 
 test('get resolver for bako identity', async () => {
   const result = await getResolver(
-    { identity: 'bako.id/naz3eh' },
-    privateKey,
+    { name: '@nazeeh21' },
   );
   console.log('Direct Bako resolve result:', result);
 });
 
 test('get name for resolver address', async () => {
   const result = await getName(
-    { resolverAddress: '0x05D6E170E2e7Ae00Fc147c4D0C3A13D06c77A40794782d9ec10Ea6f5BD23eB1d' },
-    privateKey,
+    { resolverAddress: '0x6c49291704aDc561074d887603c0C5E98B162b8662b746A1c945Bb1C71E40f79' },
   );
   console.log('Direct Bako get name result:', result);
 }); 
