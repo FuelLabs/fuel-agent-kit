@@ -42,7 +42,7 @@ const swapSchema = z.object({
   toSymbol: z.string().describe('The asset symbol to swap to. eg. USDC, ETH'),
   slippage: z
     .number()
-    .optional()
+    .nullable()
     .describe('Slippage tolerance (default: 0.01 for 1%)'),
 });
 
@@ -61,7 +61,7 @@ const addLiquiditySchema = z.object({
   asset1Symbol: z.string().describe('The symbol of the second asset'),
   slippage: z
     .number()
-    .optional()
+    .nullable()
     .describe('Slippage tolerance (default: 0.01 for 1%)'),
 });
 

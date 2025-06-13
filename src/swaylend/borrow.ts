@@ -1,4 +1,4 @@
-import { arrayify, bn, DateTime, Provider, Wallet } from 'fuels';
+import { arrayify, bn, DateTime, Provider, Wallet, Address } from 'fuels';
 import { Market, type PriceDataUpdateInput } from '../types/Market.js';
 import { getAllVerifiedFuelAssets } from '../utils/assets.js';
 import { PythContract } from '@pythnetwork/pyth-fuel-js';
@@ -61,13 +61,13 @@ export const borrowAsset = async (
 
     const pythContract = new PythContract(
       '0x1c86fdd9e0e7bc0d2ae1bf6817ef4834ffa7247655701ee1b031b52a24c523da',
-      wallet,
+      wallet as any // Temporary type assertion to work around version mismatch
     );
 
     // fetch oracle fee
     const { value: fee } = await marketContract.functions
       .update_fee(updateData)
-      .addContracts([pythContract])
+      .addContracts([pythContract.id.toString()])
       .get();
 
     // before initiating the borrow make sure the wallet has some small amount of USDC for the oracle fee
@@ -80,15 +80,16 @@ export const borrowAsset = async (
       update_data: updateData,
     };
 
+    const baseAssetId = await provider.getBaseAssetId();
     const { waitForResult } = await marketContract.functions
       .withdraw_base((+params.amount).toFixed(0), priceUpdateData)
       .callParams({
         forward: {
           amount: fee,
-          assetId: provider.getBaseAssetId(),
+          assetId: baseAssetId,
         },
       })
-      .addContracts([pythContract])
+      .addContracts([pythContract.id.toString()])
       .call();
 
     // Wait for the transaction to complete

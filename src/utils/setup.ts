@@ -9,7 +9,7 @@ export class ProviderInstance {
 
   public static async getProvider(): Promise<Provider> {
     if (!ProviderInstance.instance) {
-      ProviderInstance.instance = await Provider.create(this.PROVIDER_URL);
+      ProviderInstance.instance = new Provider(ProviderInstance.PROVIDER_URL);
     }
     return ProviderInstance.instance;
   }

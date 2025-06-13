@@ -13,6 +13,7 @@ import { createAgent } from './agent.js';
 import type { AgentExecutor } from 'langchain/agents';
 import { getOwnBalance, type GetOwnBalanceParams } from './read/balance.js';
 import type { modelMapping } from './utils/models.js';
+import { getName, getResolver, type ResolverNameParams, type ResolverParams } from './bako/resolver.js';
 
 export interface FuelAgentConfig {
   walletPrivateKey: string;
@@ -89,5 +90,13 @@ export class FuelAgent {
 
   async getOwnBalance(params: GetOwnBalanceParams) {
     return await getOwnBalance(params, this.walletPrivateKey);
+  }
+
+  async getResolver(params: ResolverParams) {
+    return await getResolver(params);
+  }
+
+  async getName(params: ResolverNameParams) {
+    return await getName(params);
   }
 }

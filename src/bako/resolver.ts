@@ -3,7 +3,7 @@ import { Wallet } from 'fuels';
 import { ProviderInstance } from '../utils/setup.js';
 
 export type ResolverParams = {
-  name: string;
+  identity: string; // Changed from 'name' to 'identity' to match schema
 };
 
 export type ResolverNameParams = {
@@ -12,12 +12,11 @@ export type ResolverNameParams = {
 
 export const getResolver = async (params: ResolverParams) => {
   try {
-    const { name } = params;
+    const { identity } = params; // Changed from 'name' to 'identity'
     const provider = await ProviderInstance.getProvider();
-    // const wallet = Wallet.fromPrivateKey(privateKey, provider);
 
     const client = new BakoIDClient();
-    const result = await client.resolver(name, 1); // 1 is the chainId for mainnet
+    const result = await client.resolver(identity, 1); // 1 is the chainId for mainnet
 
     return JSON.stringify({
       status: 'success',
@@ -35,7 +34,6 @@ export const getName = async (params: ResolverNameParams) => {
   try {
     const { resolverAddress } = params;
     const provider = await ProviderInstance.getProvider();
-    // const wallet = Wallet.fromPrivateKey(privateKey, provider);
 
     const client = new BakoIDClient();
     const result = await client.name(resolverAddress, 1); // 1 is the chainId for mainnet
@@ -50,4 +48,4 @@ export const getName = async (params: ResolverNameParams) => {
       error: error instanceof Error ? error.message : 'Unknown error',
     });
   }
-}; 
+};
